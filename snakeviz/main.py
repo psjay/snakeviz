@@ -48,6 +48,7 @@ handlers = [(r'/', VizHandler)]
 
 app = tornado.web.Application(handlers, **settings)
 
-if __name__ == '__main__':
+
+def main():
     app.listen(8080)
     tornado.ioloop.IOLoop.instance().start()

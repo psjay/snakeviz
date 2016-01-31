@@ -58,6 +58,6 @@ setup(
     },
     install_requires=['tornado>=2.0'],
     entry_points={
-        'console_scripts': ['snakeviz = snakeviz.cli:main']
+        'console_scripts': ['snakeviz = snakeviz.main:main']
     }
 )

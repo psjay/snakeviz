@@ -1,36 +1,19 @@
-*.py[co]
-
-# Packages
-*.egg
-*.egg-info
+.DS_Store
+*.pyc
+*.swp
+.installed.cfg
+bin
+tags
+develop-eggs
 dist
-build
+downloads
 eggs
 parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
-
-# Generated files
-snakeviz/version.py
-
-# Editor files
-*.swp
-
-# Installer logs
-pip-log.txt
-
-# Unit test / coverage reports
+*.egg-info
+lib
+lib64
+.idea
 .coverage
-.tox
-
-#Translations
-*.mo
-
-#Mr Developer
-.mr.developer.cfg
-
-#mkdocs build dir
-docs/site
+coverage.xml
+site/
+docs/build/
