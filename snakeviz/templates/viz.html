@@ -104,8 +104,8 @@
       var table_data = {% raw table_rows %};
       $(document).ready(function() {
         $('#pstats-table').DataTable({
-          dom: 'B',
-          buttons: [
+          'dom': 'Bfrtip',
+          'buttons': [
             'csv'
           ],
           'data': table_data,
