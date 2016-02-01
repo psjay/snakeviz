@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import base64
 import logging
 import os.path
 import pickle
@@ -31,6 +32,7 @@ class VizHandler(tornado.web.RequestHandler):
         if not content or not content.strip():
             raise tornado.web.HTTPError(400)
         try:
+            content = base64.b64decode(content)
             s = DictSourceStats(pickle.loads(content))
         except Exception:
             logging.warn('Load stats failed.', exc_info=True)
@@ -40,7 +42,7 @@ class VizHandler(tornado.web.RequestHandler):
             raise tornado.web.HTTPError(400)
 
         self.render(
-            'viz.html', profile_name='',
+            'viz.html', profile_name='Visual Profiler',
             table_rows=table_rows(s), callees=json_stats(s))
 
 
