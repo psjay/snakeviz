@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 
+import pstats
 import base64
+import cProfile
+import io
 import logging
 import os.path
 import pickle
+import re  # noqa
 from pstats import Stats
 
 import tornado.ioloop
@@ -25,6 +29,17 @@ class DictSourceStats(Stats):
 
 
 class VizHandler(tornado.web.RequestHandler):
+
+    def get(self):
+        pr = cProfile.Profile()
+        pr.enable()
+        re.compile("foo|bar")
+        pr.disable()
+        sortby = 'cumulative'
+        ps = pstats.Stats(pr).sort_stats(sortby)
+        self.render(
+            'viz.html', profile_name='Visual Profiler',
+            table_rows=table_rows(ps), callees=json_stats(ps))
 
     def post(self):
         content = self.get_argument('content')
